@@ -19,7 +19,12 @@ database.connect().then(() => {
       try{
         await database.insertUser(username, password)
 
-        res.send('Registered user ' + username)
+        let result = '<html><body> '
+          + '<h1>Registered user ' + username + '</h1><br>'
+          + '<a href="javascript:history.back()">Go Back</a>'
+          + ' </body></html>'
+          
+        res.send(result)
       }catch(e){
         console.log(e)
         res.status(500).send(e)
